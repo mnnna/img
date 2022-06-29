@@ -17,6 +17,6 @@ jobs:
         uses: x-cmd/action@main
         with:
           code: 
-            x env use node
-            x env use java 
-            x env use python
+            x rg
+            x bat
+            x fzf
