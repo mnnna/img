@@ -36,5 +36,4 @@ jobs:
     steps:
       - name: main
         uses: x-cmd/action@main
-        with:
-          code: x ws test || true
+        run: tpye x
