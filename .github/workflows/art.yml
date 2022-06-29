@@ -16,7 +16,7 @@ jobs:
       - name: main
         uses: x-cmd/action@main
         with:
-          code: 
-            x rg
-            x bat
-            x fzf
+          code: |
+            x rg ;
+            x bat;
+            x fzf ;
