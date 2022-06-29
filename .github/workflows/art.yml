@@ -15,7 +15,5 @@ jobs:
     steps:
       - name: main
         uses: x-cmd/action@main
-        run: |
-          x pkg install node
-          x pkg install java 
-          x pkg install python
+        with:
+          code: x ws test || true

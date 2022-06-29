@@ -1,3 +1,3 @@
-x pkg install node
-x pkg install java 
-x pkg install python
+x env use node
+x env use java 
+x env use python
