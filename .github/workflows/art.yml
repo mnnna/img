@@ -16,6 +16,4 @@ jobs:
       - name: main
         uses: x-cmd/action@main
         with:
-          code: |
-            x env use java
-            x env use julia
+          code: x ws test
