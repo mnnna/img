@@ -22,7 +22,7 @@ jobs:
           code: |
             x env use deno;\
             x env use go;\
-            x env use juia;\
+            x env use julia;\
             x env use kotlin;\
             x env use lua;\
             x env use node;\
