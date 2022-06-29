@@ -5,7 +5,10 @@ on:
 
 jobs:
   publisher:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest,macos-latest]
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       git_user: mnnna
@@ -16,4 +19,6 @@ jobs:
       - name: main
         uses: x-cmd/action@main
         with:
-          code: x ws test
+          code: |
+            x env use deno;\
+            x env use go
