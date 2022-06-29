@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      git_user: Zhengqbbb
-      git_email: 1074059947@qq.com
+      git_user: mnnna
+      git_email: 850400628@qq.com
       ___X_CMD_CODESORUCE_REPO: dev
       CONCURRENCY: 10
     steps:
