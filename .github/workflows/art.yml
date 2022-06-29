@@ -35,5 +35,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: main
-        uses: x-cmd/action@main
         run: tpye x
