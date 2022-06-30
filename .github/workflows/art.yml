@@ -21,4 +21,4 @@ jobs:
         with:
           code: |
             x log +x +pkg;\
-            x pkg install perl\
+            x pkg install lua\
