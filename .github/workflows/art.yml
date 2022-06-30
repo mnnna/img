@@ -21,4 +21,4 @@ jobs:
         with:
           code: |
             x log +x +pkg;\
-            x pkg install julia\
+            x pkg install nmap\
