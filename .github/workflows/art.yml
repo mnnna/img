@@ -23,12 +23,7 @@ jobs:
             x env use deno;\
             x env use go;\
             x env use julia;\
-            x env use java=open-18;\
-            x env use kotlin;\
+            x env use java=18-open;\
             x env use lua;\
-            x env use node;\
-            x env use perl;\
-            x env use python;\
-            x env use rust;\
-            x env use scala;\
+
             
