@@ -21,6 +21,6 @@ jobs:
         with:
           code: |
             x log +x +pkg;\
-            x pkg install sqlite3;\
-            x pkg install tig;\
+            x pkg install ffmpeg\
+            x pkg install nmap;\
 
