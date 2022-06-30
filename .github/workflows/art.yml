@@ -20,10 +20,32 @@ jobs:
         uses: x-cmd/action@main
         with:
           code: |
-            x env use deno;\
-            x env use go;\
-            x env use julia;\
-            x env use java=18-open;\
-            x env use lua;\
-
-            
+            x pkg install ffmpeg;\
+            x pkg insall magick;\
+            x pkg install sqlite3;\
+            x pkg install 7za;\
+            x pkg install aliyun;\
+            x pkg install bat;\
+            x pkg install curl;\
+            x pkg install dust;\
+            x pkg install exa;\
+            x pkg install fd;\
+            x pkg install fzf;\
+            x pkg install helm;\
+            x pkg install yq;\
+            x pkg install jq;\
+            x pkg install procs;\
+            x pkg install qrencode;\
+            x pkg install rg;\
+            x pkg install terraform;\
+            x pkg install tig;\
+            x pkg install tmux;\
+            x pkg install ucloud;\
+            x pkg install zellij;\
+            x pkg install zsh-plugin;\
+            x pkg install bandwhich;\
+            x pkg install ncat;\
+            x pkg install nmap;\
+            x pkg install nping;\
+            x pkg install openssl;\
+            x pkg install traceroute
