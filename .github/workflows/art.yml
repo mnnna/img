@@ -21,6 +21,4 @@ jobs:
         with:
           code: |
             x log +x +pkg;\
-            x pkg install ffmpeg\
-            x pkg install nmap;\
-
+            x pkg install perl\
