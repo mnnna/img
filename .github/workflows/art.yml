@@ -19,6 +19,45 @@ jobs:
       - name: main
         uses: x-cmd/action@main
         with:
-          code: |
-            x log +x +pkg;\
-            x pkg install nmap\
+           code: | 
+            x log +x +pkg;\ \
+            x env try jq 1.6-dirty \
+            x env try yq 4.15.1 \
+            x env try fd v8.3.2 \
+            x env try rg 13.0.0 \
+            x env try ffmpeg N-105323-gdd1 \7c86aa1-tessus
+            x env try deno v1.22.0 \
+            x env try go 1.18.2 \
+            x env try java 18 \
+            x env try julia 1.8 \
+            x env try kotlin 1.6.21 \
+            x env try lua 5.4.2 \
+            x env try node v18.4.0 \
+            x env try perl 5.34.1.1 \
+            x env try python py39_4.12.0 \
+            x env try rust 1.60.0 \
+            x env try scala 3.1.2 \
+            x env try magick 7.1.0 \
+            x env try sqlite3 3.36.0 \
+            x env try 7za 16.02 \
+            x env try aliyun v3.0.121 \
+            x env try bat 0.18.2 \
+            x env try curl 7.83.1-DEV \
+            x env try dust 0.6.0 \
+            x env try exa v0.10.1 \
+            x env try fzf 0.30.0 \
+            x env try gh 2.13.0 \
+            x env try helm v3.9.0 \
+            x env try mosquitto 2.0.1 \
+            x env try procs 0.11.9 \
+            x env try qrencode 4.1.1 \
+            x env try terraform 1.2.2 \
+            x env try tig 2.5.5 \
+            x env try tmux 3.2a \
+            x env try ucloud 0.1.38 \
+            x env try zellij v0.30.0 \
+            x env try bandwhich 0.20.0 \
+            x env try ncat 7.92 \
+            x env try nping 7.92 \
+            x env try openssl 3.0.0 \
+            x env try traceroute 5.0.1
