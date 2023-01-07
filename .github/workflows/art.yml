@@ -1,36 +1,59 @@
-name: Use upload artifact
+name: master ci workflow
+
 on:
   push:
-  workflow_dispatch:
+    branches: [ master ]
+    paths-ignore: 
+      - '**/README.md'
+      - '**/*.yml'
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  publisher:
-    runs-on: ${{ matrix.os }}
+  build-reactapp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: AgileConfig.Server.UI/react-ui-antd
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest,macos-latest]
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      git_user: mnnna
-      git_email: 850400628@qq.com
-      ___X_CMD_CODESORUCE_REPO: dev
-      CONCURRENCY: 10
+        node-version: [12.x]
+
     steps:
-      - name: main
-        uses: x-cmd/action@main
-        with:
-           code: | 
-            x log +x +pkg;\ \
-            x env try jq 1.6-dirty \
-            x env try yq 4.15.1 \
-            x env try fd v8.3.2 \
-            x env try rg 13.0.0 \
-            x env try ffmpeg N-105323-gdd1 \7c86aa1-tessus
-            x env try deno v1.22.0 \
-            x env try go 1.18.2 \
-            x env try java 18 \
-            x env try julia 1.8 \
-            x env try kotlin 1.6.21 \
-            x env try lua 5.4.2 \
-            x env try node v18.4.0 \
-          
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - run: npm install
+    - run: npm run build
+    - uses: actions/upload-artifact@v2
+      with:
+        name: agileconfig-ui
+        path: AgileConfig.Server.UI/react-ui-antd/dist/
+  build-dotnet:
+    needs: build-reactapp
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - uses: actions/download-artifact@v2
+      with:
+        name: agileconfig-ui
+        path: AgileConfig.Server.Apisite/wwwroot/ui
+    - name: Push to Docker Hub
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_NAME }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        repository: kklldog/agile_config
+        tags: test
