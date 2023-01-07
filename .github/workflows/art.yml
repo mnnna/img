@@ -1,41 +1,20 @@
-name: master ci workflow
-
+name: Use upload artifact
 on:
   push:
-    branches: [ master ]
-    paths-ignore: 
-      - '**/README.md'
-      - '**/*.yml'
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
-  build-reactapp:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: AgileConfig.Server.UI/react-ui-antd
+  publisher:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [12.x]
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-        
-    - run: npm install
-    - run: npm run build
-    - uses: actions/upload-artifact@v2
-      with:
-        name: agileconfig-ui
-        path: AgileConfig.Server.UI/react-ui-antd/dist/
-  build-dotnet:
-    needs: build-reactapp
-    runs-on: ubuntu-latest
-
+        os: [windows-latest, ubuntu-latest,macos-latest]
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      git_user: mnnna
+      git_email: 850400628@qq.com
+      ___X_CMD_CODESORUCE_REPO: dev
+      CONCURRENCY: 10
     steps:
     - uses: actions/checkout@v3
 
@@ -44,6 +23,6 @@ jobs:
     - run: echo hello > path/to/artifact/world.txt
 
     - uses: actions/upload-artifact@v3
-    with:
-      name: my-artifact
-      path: path/to/artifact/world.txt
+      with:
+        name: my-artifact
+        path: path/to/artifact/world.txt
