@@ -20,7 +20,7 @@ jobs:
 
     - run: mkdir -p path/to/artifact
 
-    - run: echo hellornkgjn > path/to/artifact/wofffrld.txt
+    - run: echo "notebook" > path/to/artifact/wofffrld.txt
 
     - uses: actions/upload-artifact@v3
       with:
